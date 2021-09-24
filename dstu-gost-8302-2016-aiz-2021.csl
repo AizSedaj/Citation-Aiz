@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style class="in-text" version="1.0" default-locale="en" xmlns="http://purl.org/net/xbiblio/csl">
+  <info>
+    <title>DSTU GOST 8302:2015_ukr_aiz</title>
+    <id>https://csl.mendeley.com/styles/575579211/dstu-gost-8302-2016-aiz</id>
+    <author>
+      <name> Aiz </name>
+      <email>aizsedaj@gmail.com</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="generic-base"/>
+    <summary/>
+    <updated>2021-09-24T12:22:14+00:00</updated>
+    <rights>This work is based on the initial code developed by Mykhailo (Michael) Shevchuk m.shev4uk@gmail.com
+		http://www.docshyr.info/wp-content/uploads/dstu-gost-7-1-2006_ukr.csl which is licensed under a Creative Commons Attribution-Share Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
+  </info>
+  <locale xml:lang="uk">
+    <terms>
+      <term name="and others">та ін.</term>
+      <term name="editor">за ред.</term>
+      <term name="et-al">та ін.</term>
+      <term name="number-of-pages"> с.</term>
+      <term name="editor">/ за ред. </term>
+    </terms>
+    <date form="text">
+      <date-part name="day" suffix="."/>
+      <date-part name="month" suffix="."/>
+      <date-part name="year"/>
+    </date>
+  </locale>
+  <locale xml:lang="ru">
+    <terms>
+      <term name="and others">и др.</term>
+      <term name="editor">ред.</term>
+      <term name="et-al">ти др.</term>
+      <term name="number-of-pages"> с.</term>
+      <term name="editor">/ под ред. </term>
+    </terms>
+    <date form="text">
+      <date-part name="day" suffix="."/>
+      <date-part name="month" suffix="."/>
+      <date-part name="year"/>
+    </date>
+  </locale>
+  <locale xml:lang="en-US">
+    <terms>
+      <term name="and others"/>
+      <term name="editor">edited by</term>
+      <term name="et-al">et. al.</term>
+      <term name="number-of-pages"> p.</term>
+      <term name="editor">/ editor </term>
+    </terms>
+    <date form="text">
+      <date-part name="month" suffix=" "/>
+      <date-part name="day" suffix=", "/>
+      <date-part name="year"/>
+    </date>
+  </locale>
+  <macro name="author-first">
+    <names variable="author">
+      <name name-as-sort-order="all" sort-separator=" " initialize-with=". " et-al-min="2" et-al-use-first="1"/>
+      <et-al term="and others"/>
+    </names>
+  </macro>
+  <macro name="author-all">
+    <names variable="author">
+      <name initialize-with=". " name-as-sort-order="all" et-al-min="4" et-al-use-first="3"/>
+      <substitute/>
+    </names>
+  </macro>
+  <macro name="translator">
+    <names variable="translator">
+      <name name-as-sort-order="all" sort-separator=" " initialize-with=". " et-al-min="5" et-al-use-first="3" prefix="transl. "/>
+    </names>
+  </macro>
+  <macro name="section-title">
+    <text variable="title"/>
+    <text variable="title-short" font-style="italic" prefix=". "/>
+  </macro>
+  <macro name="container-title">
+    <choose>
+      <if type="bill book graphic legal_case legislation motion_picture song" match="any">
+        <text variable="container-title" font-style="italic"/>
+      </if>
+      <else>
+        <text variable="container-title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="date">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="number-of-pages">
+    <text variable="number-of-pages" suffix=" p."/>
+  </macro>
+  <macro name="Editor Names">
+    <names variable="editor">
+      <label/>
+      <name delimiter-precedes-last="never" et-al-min="5" et-al-use-first="3" initialize-with="."/>
+    </names>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="; " prefix="[" suffix="]">
+      <text variable="citation-number"/>
+      <text variable="locator" form="short" prefix=", c. "/>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true" second-field-align="">
+    <sort>
+      <key macro="author-first"/>
+    </sort>
+    <layout suffix=".">
+      <text variable="citation-number" suffix=". "/>
+      <choose>
+        <if type="article-journal">
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=". "/>
+          <group delimiter=". ">
+            <text macro="container-title" font-style="italic"/>
+            <text macro="date"/>
+            <group delimiter=", ">
+              <text variable="volume" prefix="Vol. "/>
+              <text variable="issue" prefix="No. "/>
+            </group>
+            <text variable="page" prefix="P. "/>
+          </group>
+        </if>
+        <else-if type="legal_case regulation">
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=": "/>
+          <text variable="genre" suffix=". "/>
+          <names variable="authority">
+            <name/>
+            <institution form="short" reverse-order="true"/>
+          </names>
+          <group delimiter=". ">
+            <group delimiter=": ">
+              <text variable="publisher-place"/>
+              <group delimiter=", ">
+                <text variable="publisher"/>
+                <text macro="date"/>
+              </group>
+            </group>
+            <text variable="page" suffix="c."/>
+          </group>
+        </else-if>
+        <else-if type="book">
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=": " text-case="sentence"/>
+          <text variable="genre" suffix=". "/>
+          <group delimiter=". ">
+            <group delimiter=": ">
+              <text macro="container-title" text-case="sentence"/>
+              <text macro="Editor Names"/>
+            </group>
+            <group delimiter=": ">
+              <text variable="publisher-place"/>
+              <group delimiter=", ">
+                <text variable="publisher"/>
+                <text macro="date"/>
+              </group>
+            </group>
+            <text macro="number-of-pages"/>
+          </group>
+        </else-if>
+        <else-if type="chapter">
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=": "/>
+          <text variable="genre" suffix=". "/>
+          <group delimiter=". ">
+            <group delimiter=": ">
+              <text macro="container-title" text-case="sentence"/>
+              <names variable="editor" prefix="/ за ред. ">
+                <name initialize-with=". " et-al-min="5" et-al-use-first="3" delimiter-precedes-last="never"/>
+              </names>
+            </group>
+            <group delimiter=", ">
+              <text variable="publisher-place"/>
+              <group delimiter=", ">
+                <text variable="publisher"/>
+                <text macro="date"/>
+              </group>
+            </group>
+            <text variable="number-of-pages" suffix="c."/>
+          </group>
+        </else-if>
+        <else-if type="thesis">
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=": "/>
+          <text variable="genre" suffix=": "/>
+          <group delimiter=". ">
+            <group delimiter=" , ">
+              <text variable="publisher-place"/>
+              <group delimiter=", ">
+                <text variable="publisher"/>
+              </group>
+            </group>
+            <text variable="number-of-pages" suffix="c."/>
+          </group>
+        </else-if>
+        <else-if type="patent">
+          <text macro="section-title" suffix=": "/>
+          <text variable="number" prefix="пат. " suffix=" "/>
+          <text variable="publisher-place" suffix=". "/>
+          <text variable="container-title" prefix="IPC " suffix=". "/>
+          <text macro="author-all" suffix="; "/>
+          <text variable="chapter-number" prefix="№ " suffix="; "/>
+          <text variable="edition" prefix="заявл " suffix=": "/>
+          <date variable="issued" prefix="опубл ">
+            <date-part name="day" form="numeric-leading-zeros" suffix="."/>
+            <date-part name="month" form="numeric-leading-zeros" suffix="."/>
+            <date-part name="year" suffix=", "/>
+          </date>
+          <text variable="publisher" suffix=". "/>
+          <text variable="page" suffix="c."/>
+        </else-if>
+        <else-if type="paper-conference">
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=""/>
+          <text variable="container-title" prefix=": " suffix=", " font-style="italic"/>
+          <group delimiter=". ">
+            <group delimiter="; ">
+              <text macro="translator"/>
+            </group>
+            <group delimiter=" , ">
+              <text variable="publisher-place"/>
+              <group delimiter=", ">
+                <text variable="publisher"/>
+                <date variable="issued">
+                  <date-part name="day" form="numeric-leading-zeros" suffix="."/>
+                  <date-part name="month" suffix="."/>
+                  <date-part name="year" form="short"/>
+                </date>
+              </group>
+            </group>
+            <text variable="page" prefix="C. "/>
+          </group>
+        </else-if>
+        <else-if type="webpage">
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=" : "/>
+          <choose>
+            <if match="any" variable="genre">
+              <text variable="genre" suffix=". "/>
+            </if>
+            <else>
+              <text value="Веб-сайт" suffix=". "/>
+            </else>
+          </choose>
+          <text variable="URL" prefix="URL: "/>
+          <group delimiter=", ">
+            <text macro="title"/>
+            <text variable="container-title"/>
+            <text macro="access" display="blocks"/>
+            <date variable="accessed" prefix=" (дата звернення: " suffix=")">
+              <date-part name="day" form="numeric-leading-zeros" suffix="."/>
+              <date-part name="month" form="numeric-leading-zeros" suffix="."/>
+              <date-part name="year"/>
+            </date>
+          </group>
+        </else-if>
+        <else>
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=" / "/>
+          <group delimiter=". ">
+            <group delimiter="; ">
+              <text macro="translator"/>
+            </group>
+            <group delimiter=": ">
+              <text variable="publisher-place"/>
+              <group delimiter=", ">
+                <text variable="publisher"/>
+                <text macro="date"/>
+              </group>
+            </group>
+            <text variable="page" suffix=" p."/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+    <layout suffix="." locale="uk">
+      <text variable="citation-number" suffix=". "/>
+      <choose>
+        <if type="article-journal">
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=". "/>
+          <group delimiter=". ">
+            <text macro="container-title" font-style="italic"/>
+            <text macro="date"/>
+            <group delimiter=", ">
+              <text variable="volume" prefix="Vol. "/>
+              <text variable="issue" prefix="No. "/>
+            </group>
+            <text variable="page" prefix="С. "/>
+          </group>
+        </if>
+        <else-if type="legal_case regulation">
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=": "/>
+          <text variable="genre" suffix=". "/>
+          <names variable="authority">
+            <name/>
+            <institution form="short" reverse-order="true"/>
+          </names>
+          <group delimiter=". ">
+            <group delimiter=": ">
+              <text variable="publisher-place"/>
+              <group delimiter=", ">
+                <text variable="publisher"/>
+                <text macro="date"/>
+              </group>
+            </group>
+            <text variable="page" suffix="c."/>
+          </group>
+        </else-if>
+        <else-if type="book">
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=": " text-case="sentence"/>
+          <text variable="genre" suffix=". "/>
+          <group delimiter=". ">
+            <group delimiter=": ">
+              <text macro="container-title" text-case="sentence"/>
+              <text macro="Editor Names"/>
+            </group>
+            <group delimiter=": ">
+              <text variable="publisher-place"/>
+              <group delimiter=", ">
+                <text variable="publisher"/>
+                <text macro="date"/>
+              </group>
+            </group>
+            <text macro="number-of-pages"/>
+          </group>
+        </else-if>
+        <else-if type="chapter">
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=": "/>
+          <text variable="genre" suffix=". "/>
+          <group delimiter=". ">
+            <group delimiter=": ">
+              <text macro="container-title" text-case="sentence"/>
+              <names variable="editor" prefix="/ за ред. ">
+                <name initialize-with=". " et-al-min="5" et-al-use-first="3" delimiter-precedes-last="never"/>
+              </names>
+            </group>
+            <group delimiter=", ">
+              <text variable="publisher-place"/>
+              <group delimiter=", ">
+                <text variable="publisher"/>
+                <text macro="date"/>
+              </group>
+            </group>
+            <text variable="number-of-pages" suffix="c."/>
+          </group>
+        </else-if>
+        <else-if type="thesis">
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=": "/>
+          <text variable="genre" suffix=": "/>
+          <group delimiter=". ">
+            <group delimiter=" , ">
+              <text variable="publisher-place"/>
+              <group delimiter=", ">
+                <text variable="publisher"/>
+              </group>
+            </group>
+            <text variable="number-of-pages" suffix="c."/>
+          </group>
+        </else-if>
+        <else-if type="patent">
+          <text macro="section-title" suffix=": "/>
+          <text variable="number" prefix="пат. " suffix=" "/>
+          <text variable="publisher-place" suffix=". "/>
+          <text variable="container-title" prefix="IPC " suffix=". "/>
+          <text macro="author-all" suffix="; "/>
+          <text variable="chapter-number" prefix="№ " suffix="; "/>
+          <text variable="edition" prefix="заявл " suffix=": "/>
+          <date variable="issued" prefix="опубл ">
+            <date-part name="day" form="numeric-leading-zeros" suffix="."/>
+            <date-part name="month" form="numeric-leading-zeros" suffix="."/>
+            <date-part name="year" suffix=", "/>
+          </date>
+          <text variable="publisher" suffix=". "/>
+          <text variable="page" suffix="c."/>
+        </else-if>
+        <else-if type="paper-conference">
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=""/>
+          <text variable="container-title" prefix=": " suffix=", " font-style="italic"/>
+          <group delimiter=". ">
+            <group delimiter="; ">
+              <text macro="translator"/>
+            </group>
+            <group delimiter=" , ">
+              <text variable="publisher-place"/>
+              <group delimiter=", ">
+                <text variable="publisher"/>
+                <date variable="issued">
+                  <date-part name="day" form="numeric-leading-zeros" suffix="."/>
+                  <date-part name="month" suffix="."/>
+                  <date-part name="year" form="short"/>
+                </date>
+              </group>
+            </group>
+            <text variable="page" prefix="C. "/>
+          </group>
+        </else-if>
+        <else-if type="webpage">
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=" : "/>
+          <choose>
+            <if match="any" variable="genre">
+              <text variable="genre" suffix=". "/>
+            </if>
+            <else>
+              <text value="Веб-сайт" suffix=". "/>
+            </else>
+          </choose>
+          <text variable="URL" prefix="URL: "/>
+          <group delimiter=", ">
+            <text macro="title"/>
+            <text variable="container-title"/>
+            <text macro="access" display="blocks"/>
+            <date variable="accessed" prefix=" (дата звернення: " suffix=")">
+              <date-part name="day" form="numeric-leading-zeros" suffix="."/>
+              <date-part name="month" form="numeric-leading-zeros" suffix="."/>
+              <date-part name="year"/>
+            </date>
+          </group>
+        </else-if>
+        <else>
+          <text macro="author-all" suffix=". "/>
+          <text macro="section-title" suffix=" / "/>
+          <group delimiter=". ">
+            <group delimiter="; ">
+              <text macro="translator"/>
+            </group>
+            <group delimiter=": ">
+              <text variable="publisher-place"/>
+              <group delimiter=", ">
+                <text variable="publisher"/>
+                <text macro="date"/>
+              </group>
+            </group>
+            <text variable="page" suffix=" p."/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>
